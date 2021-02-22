@@ -6,7 +6,7 @@ import { AnimateSharedLayout } from "framer-motion"
 import Layout from '../components/Layout'
 import '../styles/globals.css'
 import 'antd/dist/antd.css';
-import { route } from 'next/dist/next-server/server/router';
+
 
 function MyApp({ Component, pageProps }) {
     return (

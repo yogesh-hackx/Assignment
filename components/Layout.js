@@ -11,6 +11,7 @@ const Layout = (props) => {
         const isAdmin = JSON.parse(localStorage.getItem('userData'))?.isAdmin
         if (isAdmin)
             setShowSidebar(true)
+        else setShowSidebar(false)
         console.log(props)
     }, [children])
     return (

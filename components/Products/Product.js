@@ -1,4 +1,6 @@
+import { Button } from 'antd'
 import Link from 'next/link'
+import {IoMdCart} from 'react-icons/io'
 import styles from '../../styles/Products.module.scss'
 
 const Product = ({ id, thumbnailUrl, title, price, url }) => {
@@ -15,10 +17,12 @@ const Product = ({ id, thumbnailUrl, title, price, url }) => {
                         </p>
                     </div>
                     <div className={styles.row2}>
-                        <p className={styles.price}>
+                        <div className={styles.price}>
                             {price}
-                        </p>
-                        <button>Buy</button>
+                        </div>
+                        <Button type="secondary" shape="round" icon={<IoMdCart />} size="small">
+                            Buy
+                        </Button>
                     </div>
                 </div>
             </div>

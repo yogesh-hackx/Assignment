@@ -1,24 +1,31 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { createServer, Model } from "miragejs"
+import dynamic from 'next/dynamic'
+import { createServer } from "miragejs"
 import axios from 'axios'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion'
 import { handleLogin } from '../utils/auth'
 import styles from '../styles/Login.module.scss'
+import lodash from 'lodash'
 import Admin from './admin';
+
+const CREDENTIALS = {
+    admin: { email: 'admin', password: '123456', isAdmin: true },
+    user: { email: 'user', password: '123456', isAdmin: false }
+}
 
 createServer({
     routes() {
-        this.namespace = '/api/users/';
-        this.get("/user", (schema, request) => {
-            return { user: { id: 'user', password: '123456', isAdmin: false } }
-        }, { timing: 0 })
-        this.get("/admin", (schema, request) => {
-            return { user: { id: 'admin', password: '123456', isAdmin: true } }
-        }, { timing: 0 })
-    }
+        this.passthrough('/_next/static/development/_devPagesManifest.json');
+        this.get("/api/user/admin", () => ({
+            user: { id: 'admin', password: '123456', isAdmin: true },
+        }))
+        this.get("/api/user/user", () => ({
+            user: { id: 'user', password: '123456', isAdmin: false },
+        }))
+    },
 })
 
 const FORM_FIELDS = {
@@ -40,18 +47,14 @@ const Login = () => {
     const formSubmitHandler = (e) => {
         e.preventDefault();
         console.log(formFields)
-        try {
-            if (formFields.email)
-                axios.get(`/api/users/${formFields.email}`).then(res => {
-                    console.log(res.data)
 
-                    if (res.data?.user?.password === formFields.password)
-                        handleLogin(res.data.user)
-                    else
-                        console.log("Login Failed!")
-                })
-        } catch (error) {
-            console.log("Login Failed!")
+        if (lodash.isMatch(CREDENTIALS.admin, formFields)) {
+            console.log('Logging in admin')
+            handleLogin(CREDENTIALS.admin)
+        }
+        if (lodash.isMatch(CREDENTIALS.user, formFields)) {
+            console.log('Logging in user')
+            handleLogin(CREDENTIALS.user)
         }
     }
 
@@ -90,4 +93,6 @@ const Login = () => {
     )
 }
 
-export default Login
+export default dynamic(() => Promise.resolve(Login), {
+    ssr: false
+})

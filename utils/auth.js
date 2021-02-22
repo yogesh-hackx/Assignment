@@ -13,5 +13,5 @@ export function handleLogin(data) {
 export function handleLogout() {
     cookie.remove('userData');
     localStorage.removeItem('userData');
-    Router.push('/login');
+    Router.push('/');
 }
