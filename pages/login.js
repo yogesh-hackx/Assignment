@@ -16,7 +16,7 @@ createServer({
         this.passthrough('/_next/static/development/_devPagesManifest.json');
         this.passthrough('/_next/static/development/_devPagesManifest.json');
         this.get("/api/users", (schema, request) => (schema.emails.all()))
-        this.get("/api/users/:email", (schema, request) => {
+        this.get("https://phonestore-pi.vercel.app/api/users/:email", (schema, request) => {
             let email = request.params.email
             return schema.users.find(email)
         }, { timing: 0 })
