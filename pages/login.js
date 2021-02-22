@@ -14,17 +14,18 @@ createServer({
     },
     routes() {
         this.passthrough('/_next/static/development/_devPagesManifest.json');
+        this.passthrough('/_next/static/development/_devPagesManifest.json');
         this.get("/api/users", (schema, request) => (schema.emails.all()))
         this.get("/api/users/:email", (schema, request) => {
             let email = request.params.email
             return schema.users.find(email)
         }, { timing: 0 })
     },
-    seeds(server) {
+    seeds(server) {1
         // * Just for demo purpos
         // * On a real application password hashing and many other mechanisms would be needed
-        server.create('user', { id: 'user@prithvi.ai', password: '123456', isAdmin: false })
-        server.create('user', { id: 'admin@prithvi.ai', password: '123456', isAdmin: true })
+        server.create('user', { id: 'user', password: '123456', isAdmin: false })
+        server.create('user', { id: 'admin', password: '123456', isAdmin: true })
     }
 })
 
@@ -72,7 +73,7 @@ const Login = () => {
                     <motion.div className={styles.col2} layoutId="fields">
                         <TextField
                             label="Email / Username"
-                            type="email"
+                            type="text"
                             name="email"
                             variant="outlined"
                             value={formFields.email}
