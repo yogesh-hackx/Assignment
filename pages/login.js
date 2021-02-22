@@ -10,25 +10,14 @@ import styles from '../styles/Login.module.scss'
 import Admin from './admin';
 
 createServer({
-    models: {
-        user: Model,
-    },
     routes() {
-        this.passthrough('/_next/static/development/_devPagesManifest.json');
-        this.passthrough('/_next/static/development/_devPagesManifest.json');
-        this.get("/api/users", (schema, request) => (schema.emails.all()))
-        this.get("/api/users/user", (schema, request) => {
-            return {user: { id: 'user', password: '123456', isAdmin: false }}
+        this.namespace = '/api/users/';
+        this.get("/user", (schema, request) => {
+            return { user: { id: 'user', password: '123456', isAdmin: false } }
         }, { timing: 0 })
-        this.get("/api/users/admin", (schema, request) => {
-            return {user: { id: 'admin', password: '123456', isAdmin: true }}
+        this.get("/admin", (schema, request) => {
+            return { user: { id: 'admin', password: '123456', isAdmin: true } }
         }, { timing: 0 })
-    },
-    seeds(server) {1
-        // * Just for demo purpos
-        // * On a real application password hashing and many other mechanisms would be needed
-        server.create('user', { id: 'user', password: '123456', isAdmin: false })
-        server.create('user', { id: 'admin', password: '123456', isAdmin: true })
     }
 })
 
@@ -53,14 +42,14 @@ const Login = () => {
         console.log(formFields)
         try {
             if (formFields.email)
-            axios.get(`/api/users/${formFields.email}`).then(res => {
-                console.log(res.data)
+                axios.get(`/api/users/${formFields.email}`).then(res => {
+                    console.log(res.data)
 
-                if (res.data?.user?.password === formFields.password)
-                    handleLogin(res.data.user)
-                else
-                    console.log("Login Failed!")
-            })
+                    if (res.data?.user?.password === formFields.password)
+                        handleLogin(res.data.user)
+                    else
+                        console.log("Login Failed!")
+                })
         } catch (error) {
             console.log("Login Failed!")
         }
