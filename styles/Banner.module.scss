@@ -1,0 +1,28 @@
+.banner {
+    grid-column: span 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #EA7776;
+    font-size: 64px;
+    color: white;
+    border-radius: 16px;
+
+    .innerBanner {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        margin-top: 16px;
+        margin-bottom: -12px;
+    }
+    
+    .bannerText {
+        color: white;
+        font-weight: bold;
+
+    }
+
+    @media only screen and (max-width: 950px) {
+        display: none;
+    }
+}

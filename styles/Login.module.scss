@@ -1,0 +1,25 @@
+.loginContainer {
+    max-width: 970px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    height: 80vh;
+
+    .col1 {
+        font-size: 96px;
+        font-weight: 900;
+        line-height: 96%;
+        flex: 1;
+    }
+
+    form {
+        flex: 2;
+    }
+
+    .col2 {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-left: 48px;
+    }
+}

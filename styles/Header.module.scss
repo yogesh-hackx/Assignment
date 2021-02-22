@@ -1,0 +1,46 @@
+.navContainer {
+    display: flex;
+    padding: 8px 16px;
+    background-color: black;
+    color: white;
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .logo {
+            font-size: 24px;
+            font-weight: bolder;
+            cursor: pointer;
+        }
+
+        .rightNav {
+            display: flex;
+            gap: 24px;
+            font-weight: 600;
+        }
+
+        .loggedInContainer {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            color: black;
+            gap: 16px;
+            border-radius: 16px;
+            padding-right: 16px;
+            cursor: pointer;
+
+            .userImageContainer {
+                height: 36px;
+                overflow: hidden;
+                width: 36px;
+                position: relative;
+                border-radius: 50%;
+            }
+        }
+    }
+}

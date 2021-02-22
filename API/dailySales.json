@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "date": "2021-02-20",
+        "time": "9:00 AM",
+        "user": "James",
+        "itemCode": "846846",
+        "sales": 795
+    },
+    {
+        "id": 2,
+        "date": "2021-02-19",
+        "time": "04:45 PM",
+        "user": "Ayush",
+        "itemCode": "498653",
+        "sales": 1248
+    },
+    {
+        "id": 3,
+        "date": "2021-02-18",
+        "time": "10:00 AM",
+        "user": "David",
+        "itemCode": "946842",
+        "sales": 2024
+    },
+    {
+        "id": 4,
+        "date": "2021-02-17",
+        "time": "11:00 AM",
+        "user": "Yogesh",
+        "itemCode": "846846",
+        "sales": 1578
+    },
+    {
+        "id": 5,
+        "date": "2021-02-16",
+        "time": "9:00 AM",
+        "user": "James",
+        "itemCode": "376844",
+        "sales": 1768
+    },
+    {
+        "id": 6,
+        "date": "2021-02-15",
+        "time": "11:40 AM",
+        "user": "Shashank",
+        "itemCode": "846846",
+        "sales": 1295
+    },
+    {
+        "id": 2,
+        "date": "2021-02-19",
+        "time": "04:45 PM",
+        "user": "Ayush",
+        "itemCode": "498653",
+        "sales": 3048
+    }
+]
