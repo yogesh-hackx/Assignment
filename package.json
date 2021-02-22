@@ -9,6 +9,7 @@
         "lint": "eslint ./**/*.js src/**/*.jsx"
     },
     "dependencies": {
+        "@material-ui/core": "^4.11.3",
         "antd": "^4.12.3",
         "axios": "^0.21.1",
         "framer-motion": "^3.6.2",
