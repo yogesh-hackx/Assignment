@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import { motion } from 'framer-motion'
 import { handleLogin } from '../utils/auth'
 import styles from '../styles/Login.module.scss'
+import Admin from './admin';
 
 createServer({
     models: {
@@ -16,9 +17,11 @@ createServer({
         this.passthrough('/_next/static/development/_devPagesManifest.json');
         this.passthrough('/_next/static/development/_devPagesManifest.json');
         this.get("/api/users", (schema, request) => (schema.emails.all()))
-        this.get("https://phonestore-pi.vercel.app/api/users/:email", (schema, request) => {
-            let email = request.params.email
-            return schema.users.find(email)
+        this.get("/api/users/user", (schema, request) => {
+            return {user: { id: 'user', password: '123456', isAdmin: false }}
+        }, { timing: 0 })
+        this.get("/api/users/admin", (schema, request) => {
+            return {user: { id: 'admin', password: '123456', isAdmin: true }}
         }, { timing: 0 })
     },
     seeds(server) {1
